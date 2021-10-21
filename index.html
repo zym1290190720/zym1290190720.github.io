@@ -195,7 +195,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-21 09:10:23" itemprop="dateModified" datetime="2021-10-21T09:10:23+08:00">2021-10-21</time>
+                <time title="修改时间：2021-10-21 09:22:37" itemprop="dateModified" datetime="2021-10-21T09:22:37+08:00">2021-10-21</time>
               </span>
 
           
@@ -304,7 +304,20 @@
 <p><code>hexo d</code></p>
 <p>其实第三条的 hexo d 就是部署网站命令，d是deploy的缩写。完成后，打开浏览器，在地址栏输入你的放置个人网站的仓库路径，即xxx.github.io比如我的xxx就是我的GitHub用户名。</p>
 <p>你就会发现你的博客已经上线了，可以在网络上访问了。</p>
-<h3 id="7-绑定域名"><a href="#7-绑定域名" class="headerlink" title="7.绑定域名"></a><strong>7.绑定域名</strong></h3>
+<h3 id="7-绑定域名"><a href="#7-绑定域名" class="headerlink" title="7.绑定域名"></a><strong>7.绑定域名</strong></h3><h3 id="10-发布文章"><a href="#10-发布文章" class="headerlink" title="10.发布文章"></a><strong>10.发布文章</strong></h3><p>进入Git Bash界面，输入命令：<code>hexo n 文章名</code></p>
+<p>这样会在blog/source/_posts下面生成文章名.md和一个文章名的文件夹</p>
+<p>我们在md文件里面就可以编写自己的文章了</p>
+<p><strong>注意，这里加载图片有坑！</strong></p>
+<p>由于我们是在md文件里面编写，因此这篇文章需要使用markdown语法文章，在文章中插入本地图片需要遵循markdown的语法，很有可能遇到使用绝对路径和相对路径，再部署到github上面图片无法显示的情况。</p>
+<p><strong>解决办法：</strong></p>
+<p>先安装插件，打开Git Bash界面，输入命令</p>
+<p><code>npm install hexo-asset-image --save</code></p>
+<p>安装第三方插件hexo-asset-image</p>
+<p>然后修改全局配置文件，修改里面的post_asset+folder的值为true</p>
+<p>新建文章，在文章名的文件夹里面放入要插入的图片，然后在md文件中引用该文件夹的图片，markdown插入图片的语法为<img src>，圆括号中的地址为同名文件夹中图片的文件名。</p>
+<p>举例如下：</p>
+<p><img src="/2021/10/20/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA%E2%80%94%E2%80%94%E5%88%9D%E6%AD%A5/image13.png" alt="image13"></p>
+
       
     </div>
 
