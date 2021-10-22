@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://example.com/2021/10/22/VABKS-Verifiable-Attribute-based-Keyword-Search-over-Outsourced-Encrypted-Data%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/</loc>
+    
+    <lastmod>2021-10-22</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/2021/10/22/Privacy-Preserving-Multi-Keyword-Searchable-Encryption-for-Distributed-Systems%E2%80%94%E2%80%94%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/</loc>
+    
+    <lastmod>2021-10-22</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://example.com/2021/10/21/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/</loc>
     
     <lastmod>2021-10-22</lastmod>
@@ -73,6 +87,13 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>http://example.com/tags/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%B8%B8/</loc>
+    <lastmod>2021-10-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   
   <url>
@@ -84,6 +105,13 @@
   
   <url>
     <loc>http://example.com/categories/web%E5%AE%89%E5%85%A8%E6%B8%97%E9%80%8F%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2021-10-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/categories/%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/</loc>
     <lastmod>2021-10-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

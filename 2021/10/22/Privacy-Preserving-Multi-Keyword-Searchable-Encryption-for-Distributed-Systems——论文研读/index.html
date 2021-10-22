@@ -1,0 +1,517 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/%E6%88%91%E7%9A%84%E5%AD%A6%E4%B9%A0%20(1).png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/%E6%88%91%E7%9A%84%E5%AD%A6%E4%B9%A0.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=微软雅黑:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一篇关于MR&#x2F;MW的公钥可搜索加密方案。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Privacy-Preserving Multi-Keyword Searchable Encryption for Distributed Systems——论文研读">
+<meta property="og:url" content="http://example.com/2021/10/22/Privacy-Preserving-Multi-Keyword-Searchable-Encryption-for-Distributed-Systems%E2%80%94%E2%80%94%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/index.html">
+<meta property="og:site_name" content="猪哥的博客">
+<meta property="og:description" content="一篇关于MR&#x2F;MW的公钥可搜索加密方案。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/10/22/Privacy-Preserving-Multi-Keyword-Searchable-Encryption-for-Distributed-Systems%E2%80%94%E2%80%94%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/image1.png">
+<meta property="og:image" content="http://example.com/2021/10/22/Privacy-Preserving-Multi-Keyword-Searchable-Encryption-for-Distributed-Systems%E2%80%94%E2%80%94%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/image2.png">
+<meta property="og:image" content="http://example.com/2021/10/22/Privacy-Preserving-Multi-Keyword-Searchable-Encryption-for-Distributed-Systems%E2%80%94%E2%80%94%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/image3.png">
+<meta property="og:image" content="http://example.com/2021/10/22/Privacy-Preserving-Multi-Keyword-Searchable-Encryption-for-Distributed-Systems%E2%80%94%E2%80%94%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/image4.png">
+<meta property="og:image" content="http://example.com/2021/10/22/Privacy-Preserving-Multi-Keyword-Searchable-Encryption-for-Distributed-Systems%E2%80%94%E2%80%94%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/image5.png">
+<meta property="og:image" content="http://example.com/2021/10/22/Privacy-Preserving-Multi-Keyword-Searchable-Encryption-for-Distributed-Systems%E2%80%94%E2%80%94%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/image6.png">
+<meta property="og:image" content="http://example.com/2021/10/22/Privacy-Preserving-Multi-Keyword-Searchable-Encryption-for-Distributed-Systems%E2%80%94%E2%80%94%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/image7.png">
+<meta property="og:image" content="http://example.com/2021/10/22/Privacy-Preserving-Multi-Keyword-Searchable-Encryption-for-Distributed-Systems%E2%80%94%E2%80%94%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/image8.png">
+<meta property="article:published_time" content="2021-10-22T02:16:37.000Z">
+<meta property="article:modified_time" content="2021-10-22T02:23:54.496Z">
+<meta property="article:author" content="zym">
+<meta property="article:tag" content="研究生学习日常">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/10/22/Privacy-Preserving-Multi-Keyword-Searchable-Encryption-for-Distributed-Systems%E2%80%94%E2%80%94%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/image1.png">
+
+<link rel="canonical" href="http://example.com/2021/10/22/Privacy-Preserving-Multi-Keyword-Searchable-Encryption-for-Distributed-Systems%E2%80%94%E2%80%94%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Privacy-Preserving Multi-Keyword Searchable Encryption for Distributed Systems——论文研读 | 猪哥的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">猪哥的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">25了还没去过星巴克的可怜猪哥</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签<span class="badge">2</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类<span class="badge">3</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="acchive fa-fw"></i>归档<span class="badge">7</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/22/Privacy-Preserving-Multi-Keyword-Searchable-Encryption-for-Distributed-Systems%E2%80%94%E2%80%94%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Panda.jpg">
+      <meta itemprop="name" content="zym">
+      <meta itemprop="description" content="生活日常随笔">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="猪哥的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Privacy-Preserving Multi-Keyword Searchable Encryption for Distributed Systems——论文研读
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-10-22 10:16:37 / 修改时间：10:23:54" itemprop="dateCreated datePublished" datetime="2021-10-22T10:16:37+08:00">2021-10-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">论文研读</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/10/22/Privacy-Preserving-Multi-Keyword-Searchable-Encryption-for-Distributed-Systems%E2%80%94%E2%80%94%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/10/22/Privacy-Preserving-Multi-Keyword-Searchable-Encryption-for-Distributed-Systems%E2%80%94%E2%80%94%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <div class="post-description">一篇关于MR/MW的公钥可搜索加密方案。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="论文汇报"><a href="#论文汇报" class="headerlink" title="论文汇报"></a>论文汇报</h1><p>本周我看了一篇将可搜索加密运用到分布式存储上的一篇论文——<em><strong>《Privacy-Preserving Multi-Keyword Searchable Encryption for Distributed Systems》</strong></em>。这篇论文的技术要点主要是讲本文提出的一个子集判断策略和上次我看的<em><strong>Distributed Two-Trapdoor Public-Key Cryptosystem(DT-PKC)<em><strong>相结合起来，这样不仅可以在</strong></em>MW/MR</strong></em>上对加密数据进行多关键字搜索，而且还保证了数据和搜索模式的隐私性；并且为了防止KGA，里面还采用了多服务器架构，通过只允许授权服务器联合测试搜索令牌是否与存储的密文相匹配，加快了搜索相应，分担了工作负载，降低了密钥泄露风险。</p>
+<h2 id="子集判断策略"><a href="#子集判断策略" class="headerlink" title="子集判断策略"></a>子集判断策略</h2><p><img src="/2021/10/22/Privacy-Preserving-Multi-Keyword-Searchable-Encryption-for-Distributed-Systems%E2%80%94%E2%80%94%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/image1.png" alt="image1"></p>
+<p>对于一个通用集合<em><strong>W</strong></em>，这里来判断包含于该通用集合<em><strong>W</strong></em>中的两个子集合***W<sub>T</sub><em><strong>和</strong></em>W<sub>t</sub><em><strong>之间的包含关系，即</strong></em>W<sub>t</sub>***是否包含于W<sub>T</sub>之中。</p>
+<p>对于拥有***$\mu$<em><strong>个关键字的集合</strong></em>W=<em>{$\omega$<sub>$\mu$-1</sub>,…,$\omega$<sub>0</sub>}<strong>，用一个十进制数来表示，并且该十进制数的二进制表示出来每一位都表示一个关键字的存在状态，若为1即表示包含该关键字，为0则不包含；同样的也这样表示</strong></em>W<sub>T</sub><em><strong>和</strong></em>W<sub>t</sub>***，接下来就是这个算法的执行过程：</p>
+<p><img src="/2021/10/22/Privacy-Preserving-Multi-Keyword-Searchable-Encryption-for-Distributed-Systems%E2%80%94%E2%80%94%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/image2.png" alt="image2"></p>
+<p>并且当***W<sub>t</sub><em><strong>包含于</strong></em>W<sub>T</sub>***中时，该子集判断流程还可以优化为下面这个算法：</p>
+<p><img src="/2021/10/22/Privacy-Preserving-Multi-Keyword-Searchable-Encryption-for-Distributed-Systems%E2%80%94%E2%80%94%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/image3.png" alt="image3"></p>
+<h2 id="SE-EPOM"><a href="#SE-EPOM" class="headerlink" title="SE-EPOM"></a>SE-EPOM</h2><p>本文提出的<em><strong>A Searchable Encryption based on Efficient Privacy-preserving Outsourced calculation framework with Multiple keys</strong></em>的大致流程如下：</p>
+<ol>
+<li><em><strong>KeyGen(1<sup>$\kappa$</sup>)</strong></em>$\to$(PK<sub>DP</sub>,SK<sub>DP</sub>,PK<sub>RU</sub>,SK<sub>RU</sub>,SK<sub>CP</sub>,SK<sub>IS</sub>)</li>
+<li><em><strong>Store(PK<sub>DP</sub>,W<sub>T</sub>)</strong></em>$\to$SC</li>
+<li>***Trapdoor(PK<sub>Ru</sub>,W<sub>t</sub>)$\to$***td</li>
+<li>***Test(PK<sub>DP</sub>,SK<sub>CP</sub>,SK<sub>IS</sub>,PK<sub>RU</sub>,td,SC)$\to$***0/1</li>
+</ol>
+<h3 id="系统介绍"><a href="#系统介绍" class="headerlink" title="系统介绍"></a>系统介绍</h3><h4 id="成员介绍："><a href="#成员介绍：" class="headerlink" title="成员介绍："></a>成员介绍：</h4><p><img src="/2021/10/22/Privacy-Preserving-Multi-Keyword-Searchable-Encryption-for-Distributed-Systems%E2%80%94%E2%80%94%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/image4.png" alt="image4"></p>
+<ul>
+<li>KGC:受信任的KGC的任务是分发和管理系统中的公钥和私钥。</li>
+<li>CP:CP有“无限”的数据存储空间，并存储和管理所有注册的RUs的外包数据。CP还以加密的形式存储所有中间结果和最终结果。此外，CP能够对加密数据执行某些计算。</li>
+<li>IS: 组织的内部服务器进行部分计算，以协助CP处理搜索查询。实际上，IS可以被指定为组织中的服务器。</li>
+<li>DP:每个数据提供者根据公共参数生成自己的公开和秘密密钥对，根据与文档相关的关键字计算可搜索密文，并将文档与可搜索密文一起存储在CP上。</li>
+<li>RU:每个请求用户生成自己的基于DP的公开和秘密密钥对，并为感兴趣的特定关键字计算陷门。它对CP返回的搜索结果进行解密，获得满足搜索查询的文档的索引。</li>
+</ul>
+<h4 id="Detailed-Construction："><a href="#Detailed-Construction：" class="headerlink" title="Detailed Construction："></a>Detailed Construction：</h4><h5 id="KeyGen"><a href="#KeyGen" class="headerlink" title="KeyGen:"></a><em><strong>KeyGen:</strong></em></h5><ul>
+<li><p>KGC运行<em><strong>DT-PKC</strong></em>中的KeyGen算法来得到<em><strong>the strong private key</strong></em> <em><strong>SK=$\lambda$</strong></em>,并且运行<strong>D<em>T-PKC</em></strong>中的<strong>S<em>Keys</em></strong>算法来得到两个<strong>p<em>artial strong private key</em></strong> <em><strong>SK<sup>(1)</sup>=$\lambda$ <sub>1</sub>,SK<sup>(2)</sup>=$\lambda$<sub>2</sub></strong></em>;初始化一个通用集合<strong>W</strong>。</p>
+</li>
+<li><p>最后公共参数<em><strong>PP=(W,$\mu$,N,g)</strong></em>,<strong>S<em>K<sub>CP</sub>=SK<sup>(1)</sup>=$\lambda$<sub>1</sub></em></strong>,<strong>S<em>K<sub>IS</sub>=SK<sup>(2)</sup>=$\lambda$<sub>2</sub></em></strong></p>
+<p>​                        <em><strong>pk<sub>DP</sub>=(N,g,h<sub>DP</sub>),sk<sub>DP</sub>=$\theta$<sub>DP</sub></strong></em></p>
+<p>​                        <em><strong>pk<sub>RU</sub>=(N,g,h<sub>RU</sub>),sk<sub>RU</sub>=$\theta$<sub>RU</sub></strong></em></p>
+</li>
+</ul>
+<h5 id="Store"><a href="#Store" class="headerlink" title="Store:"></a><em><strong>Store:</strong></em></h5><p>这时一个或多个DP来上传自己的文件和相关的关键字集合<em><strong>W<sub>T</sub></strong></em>,用一个十进制数<em><strong>T</strong></em>来表示，其二进制表示为***(T<sub>$\mu$</sub>,…,T<sub>0</sub>)<em><strong>,最后运行</strong>D</em>T-PKC<em><strong>中的</strong>E</em>nc*<strong>算法得到结果</strong>[*T]<sub>pk<sub>DP</sub></sub>***并发送给CP。</p>
+<h5 id="Trapdoor"><a href="#Trapdoor" class="headerlink" title="Trapdoor:"></a><em><strong>Trapdoor:</strong></em></h5><p>此时RU会根据自己想要查询的多个关键字相较于通用集合<em><strong>W</strong></em>生成一个关键字集合<em><strong>W<sub>t</sub></strong></em>,同上一步进行加密后得到结<em><strong>果[t]<sub>pk<sub>RU</sub></sub><em><strong>并发送给</strong></em>CP</strong></em>。</p>
+<h5 id="Test"><a href="#Test" class="headerlink" title="Test:"></a>Test:</h5><p>最后的测试阶段有如下四步：</p>
+<p><img src="/2021/10/22/Privacy-Preserving-Multi-Keyword-Searchable-Encryption-for-Distributed-Systems%E2%80%94%E2%80%94%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/image5.png" alt="image5"></p>
+<p><img src="/2021/10/22/Privacy-Preserving-Multi-Keyword-Searchable-Encryption-for-Distributed-Systems%E2%80%94%E2%80%94%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/image6.png" alt="image6"></p>
+<p><img src="/2021/10/22/Privacy-Preserving-Multi-Keyword-Searchable-Encryption-for-Distributed-Systems%E2%80%94%E2%80%94%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/image7.png" alt="image7"></p>
+<p><img src="/2021/10/22/Privacy-Preserving-Multi-Keyword-Searchable-Encryption-for-Distributed-Systems%E2%80%94%E2%80%94%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/image8.png" alt="image8"></p>
+<p>这里只是一个文档和它的关键字集合，如果RU的查询关键字集合是这个文档的关键字集合的子集，说明这个查询结果是正确的。类似的可以推广到多个文件和其对应的关键字集合中来。</p>
+<p><strong>对于这一步我个人理解为查找的过程，因为本篇论文中只是给出了一个文件的匹配过程，如果上传的文件数量多的话这种查询方式的效率可能会很低。</strong></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%B8%B8/" rel="tag"># 研究生学习日常</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/10/21/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/" rel="prev" title="文件包含漏洞">
+      <i class="fa fa-chevron-left"></i> 文件包含漏洞
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/10/22/VABKS-Verifiable-Attribute-based-Keyword-Search-over-Outsourced-Encrypted-Data%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/" rel="next" title="VABKS: Verifiable Attribute-based Keyword Search over Outsourced Encrypted Data论文研读">
+      VABKS: Verifiable Attribute-based Keyword Search over Outsourced Encrypted Data论文研读 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BA%E6%96%87%E6%B1%87%E6%8A%A5"><span class="nav-number">1.</span> <span class="nav-text">论文汇报</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%90%E9%9B%86%E5%88%A4%E6%96%AD%E7%AD%96%E7%95%A5"><span class="nav-number">1.1.</span> <span class="nav-text">子集判断策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SE-EPOM"><span class="nav-number">1.2.</span> <span class="nav-text">SE-EPOM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.2.1.</span> <span class="nav-text">系统介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%88%90%E5%91%98%E4%BB%8B%E7%BB%8D%EF%BC%9A"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">成员介绍：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Detailed-Construction%EF%BC%9A"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">Detailed Construction：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#KeyGen"><span class="nav-number">1.2.1.2.1.</span> <span class="nav-text">KeyGen:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Store"><span class="nav-number">1.2.1.2.2.</span> <span class="nav-text">Store:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Trapdoor"><span class="nav-number">1.2.1.2.3.</span> <span class="nav-text">Trapdoor:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Test"><span class="nav-number">1.2.1.2.4.</span> <span class="nav-text">Test:</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="zym"
+      src="/images/Panda.jpg">
+  <p class="site-author-name" itemprop="name">zym</p>
+  <div class="site-description" itemprop="description">生活日常随笔</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zym1290190720" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zym1290190720" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1384026889&auto=1&height=66"></iframe>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zym</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script color='' opacity='' zIndex='' count='' src="/lib/canvas-nest/canvas-nest-nomobile.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : '7p2LmPjyfCosM5SP4z3ebEAM-gzGzoHsz',
+      appKey     : 'eeaup3Y0KIEkbiXMdTna4Hgy',
+      placeholder: "留下你的足迹吧",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+
+</body>
+</html>
+
+
+
