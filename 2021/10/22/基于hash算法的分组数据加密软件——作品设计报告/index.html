@@ -28,8 +28,25 @@
 <meta property="og:description" content="作品实现了一个基于哈希算法的分组加密系统，使用三轮Feistel结构，调用某些成熟的哈希算法，灵活实现多种分组长度的数据加密。传统的分组加密例如DES，使用了固定的64比特分组长度和固定的56比特密钥，而本作品的分组长度可控，密钥不使用传统的子密钥生成算法，而是由使用者自己输入的口令确定。在传统的Feistel网络中，明文被平均分为左右两个部分，通过轮函数、左右交换、异或等手段进行多轮迭代，本作品">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image1.png">
+<meta property="og:image" content="http://example.com/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image2.png">
+<meta property="og:image" content="http://example.com/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image3.png">
+<meta property="og:image" content="http://example.com/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image4.png">
+<meta property="og:image" content="http://example.com/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image5.png">
+<meta property="og:image" content="http://example.com/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image6.png">
+<meta property="og:image" content="http://example.com/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image7.png">
+<meta property="og:image" content="http://example.com/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image8.png">
+<meta property="og:image" content="http://example.com/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image9.png">
+<meta property="og:image" content="http://example.com/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image10.png">
+<meta property="og:image" content="http://example.com/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image11.png">
+<meta property="og:image" content="http://example.com/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image12.png">
+<meta property="og:image" content="http://example.com/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image13.png">
+<meta property="og:image" content="http://example.com/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image14.png">
+<meta property="og:image" content="http://example.com/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image15.png">
+<meta property="og:image" content="http://example.com/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image16.png">
+<meta property="og:image" content="http://example.com/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image17.png">
+<meta property="og:image" content="http://example.com/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image18.png">
 <meta property="article:published_time" content="2021-10-22T02:33:03.000Z">
-<meta property="article:modified_time" content="2021-10-22T02:44:34.653Z">
+<meta property="article:modified_time" content="2021-10-22T03:28:09.589Z">
 <meta property="article:author" content="zym">
 <meta property="article:tag" content="哈希">
 <meta property="article:tag" content="分组密码">
@@ -188,7 +205,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-10-22 10:33:03 / 修改时间：10:44:34" itemprop="dateCreated datePublished" datetime="2021-10-22T10:33:03+08:00">2021-10-22</time>
+              <time title="创建时间：2021-10-22 10:33:03 / 修改时间：11:28:09" itemprop="dateCreated datePublished" datetime="2021-10-22T10:33:03+08:00">2021-10-22</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -232,61 +249,121 @@
 <div align="center">图1.1 软件设计页面</div>
 
 <h2 id="1-1-作品功能"><a href="#1-1-作品功能" class="headerlink" title="1.1 作品功能"></a>1.1 作品功能</h2><ul>
-<li><p>支持多种哈希算法调用</p>
+<li><p><strong>支持多种哈希算法调用</strong></p>
 <p>作品支持调用SM3、MD5、SHA-1、SHA-224、SHA-256、SHA-384、SHA-512、SHA3-224、SHA3-256、SHA3-384、SHA3-512、RIPEMD160等常见且成熟的哈希算法。</p>
 </li>
-</ul>
-<p>l 支持多种分组长度和左右分块方案</p>
+<li><p><strong>支持多种分组长度和左右分块方案</strong></p>
 <p>传统的分组加密例如DES，使用了固定的64比特分组长度且左右分块大小相等，而本作品的分组长度可控，支持使用者自定义分组长度和左右分块大小，例如自定义100比特的分组长度，30比特左分块和70比特右分块。</p>
-<p>l 支持多种分组密码工作模式选择</p>
+</li>
+<li><p><strong>支持多种分组密码工作模式选择</strong></p>
 <p>作品支持使用者选择ECB、CBC、CFB、OFB等四种分组密码工作模式进行加解密操作。</p>
-<p>l 口令字作密钥</p>
+</li>
+<li><p><strong>口令字作密钥</strong></p>
 <p>密钥不使用传统的子密钥生成算法，而是由使用者自己输入的口令确定。即作品支持使用者自定义口令，并将口令作为Feistel网络中轮函数的部分输入，该口令即为本加密系统的密钥。</p>
-<p>l 密文拥有消息认证码，用作完整性检验与明密识别</p>
+</li>
+<li><p><strong>密文拥有消息认证码，用作完整性检验与明密识别</strong></p>
 <p>密文结果包含消息认证码，通过验证消息认证码，可以检验消息的完整性，同时实现明密识别。</p>
-<p>l 支持多种输入/输出格式</p>
+</li>
+<li><p><strong>支持多种输入/输出格式</strong></p>
 <p>密钥与加密数据的支持格式均包含中文字符；作品支持二进制、十进制、十六进制以及Base64等多种格式的输入和输出。</p>
+</li>
+</ul>
 <h2 id="1-2-性能说明"><a href="#1-2-性能说明" class="headerlink" title="1.2 性能说明"></a>1.2 性能说明</h2><p>本作品调用哈希算法替代Feistel结构中的轮函数，通过与其他对称加密方案诸如AES、DES和3DES等进行比较（详见3.2节），表明本作品在加解密效率上有一定的实用性，同时满足了密钥长度、密钥内容、分组大小和加密模式等均可控的性能需求，有很强的灵活性与适用性。</p>
 <h1 id="2-设计与实现方案"><a href="#2-设计与实现方案" class="headerlink" title="2.设计与实现方案"></a>2.设计与实现方案</h1><h2 id="2-1-设计原理"><a href="#2-1-设计原理" class="headerlink" title="2.1 设计原理"></a>2.1 设计原理</h2><p>本节详细描述系统的分组和填充方式，以及Feistel网络结构设计。</p>
 <h3 id="2-1-1-分组和填充"><a href="#2-1-1-分组和填充" class="headerlink" title="2.1.1 分组和填充"></a>2.1.1 分组和填充</h3><p>加密阶段，首先将输入的明文转换为二进制串，根据设定的分组大小进行分割，若明文长度不能整除分组大小，则在明文二进制串末尾填充‘0’直至能刚好分割为若干个等长的分组；同时在填充完的数据末尾增加一个分组用于记录明文原始数据的长度，如图2.1所示。</p>
-<p>​     </p>
-<p>图2.1 明文的分组和填充</p>
-<h3 id="2-1-2-Feistel网络结构设计"><a href="#2-1-2-Feistel网络结构设计" class="headerlink" title="2.1.2  Feistel网络结构设计"></a>2.1.2  Feistel网络结构设计</h3><p>本系统使用了三轮Feistel结构，每个明文分组作为Feistel网络的输入，根据使用者自定义的左右分块大小分为长度为a的左分块  和长度为b的右分块  。</p>
-<p>第一轮，  ，  ，  为口令  和  拼接后进行哈希的结果，取前a个比特与  异或得到  ；第二轮，  ，  ，  为口令  和  拼接后进行哈希的结果，取前b个比特与  异或；第三轮同第一轮相同；最后将  作为密文输出。</p>
+<img src="/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image2.png" align="center">
+
+<div align="center">图2.1 明文的分组和填充</div>
+
+<h3 id="2-1-2-Feistel网络结构设计"><a href="#2-1-2-Feistel网络结构设计" class="headerlink" title="2.1.2  Feistel网络结构设计"></a>2.1.2  Feistel网络结构设计</h3><p>本系统使用了三轮Feistel结构，每个明文分组作为Feistel网络的输入，根据使用者自定义的左右分块大小分为长度为a的左分块 L<sub>0</sub>和长度为b的右分块R<sub>0</sub>。</p>
+<p>第一轮， L<sub>1</sub>=R<sub>0</sub>，R<sub>1</sub>=L<sub>0</sub> $\oplus$ Hash(K|R<sub>0</sub>)，Hash(K|R<sub>0</sub>)为口令K和R<sub>0</sub>拼接后进行哈希的结果，取前a个比特与L<sub>0</sub>异或得到R<sub>1</sub>；第二轮，L<sub>2</sub>=R<sub>2</sub>，R<sub>2</sub>=L<sub>1</sub>⊕Hash(K|R<sub>1</sub>)，Hash(K|R<sub>1</sub>)为口令K和R<sub>1</sub>拼接后进行哈希的结果，取前b个比特与L<sub>1</sub>异或；第三轮同第一轮相同；最后将L<sub>3</sub>|R<sub>3</sub>作为密文输出。</p>
 <p>Feistel网络结构设计如图2.2所示。</p>
-<p>图2.2 Feistel网络结构</p>
+<img src="/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image3.png" align="center">
+
+<div align="center">图2.2 Feistel网络结构</div>
+
 <h3 id="2-1-3-密文及消息验证码"><a href="#2-1-3-密文及消息验证码" class="headerlink" title="2.1.3 密文及消息验证码"></a>2.1.3 密文及消息验证码</h3><p>将每个分组的密文输出拼接起来就是原始密文C’，其中记录长度的分组也会经过加密成为第n+1个分组，最后将明文M和口令K拼接后进行MD5哈希运算,即  ，得到的128比特结果即为消息验证码，将其拼接到原始密文C’后面形成最终的密文C。（若为CBC、CFB、OFB模式，则还会在密文前拼接一个x比特长的初始向量IV）。</p>
 <h2 id="2-2-系统流程"><a href="#2-2-系统流程" class="headerlink" title="2.2 系统流程"></a>2.2 系统流程</h2><p> 本节描述系统的使用流程和运行流程。</p>
 <h3 id="2-2-1-系统使用流程"><a href="#2-2-1-系统使用流程" class="headerlink" title="2.2.1 系统使用流程"></a>2.2.1 系统使用流程</h3><p>第一步☛：输入参数</p>
 <p>系统需要接收使用者输入的八个参数：口令、文本、分组长度、左分块大小、右分块大小、哈希算法、工作模式、输入/输出格式。用户使用过程的流程如图2.3所示。</p>
-<p>​     </p>
-<p>图2.3 用户使用流程图</p>
+<p>​    <img src="/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image4.png" align="center"></p>
+<div align="center">图2.3 用户使用流程图</div>
+
 <p>第二步☛：输入检查</p>
 <p>系统会对以下几项内容进行输入检查：</p>
 <p><strong>①</strong> 确定每个参数都不为空且左右分块长度之和与分组长度相等；</p>
-<p><strong>②</strong> 左右分块大小不得大于所选哈希算法的输出长度（这是因为在Feistel结果中，计算R1=L0⊕Hash(K|R0)时，若L0的长度大于Hash输出长度的话，就无法进行异或操作）；</p>
-<p><strong>③</strong>当选择加密时，假设分组长度为n比特，则明文长度不得大于  （这是因为我们使用了单独的一个分组来记录原始明文数据的长度，而一个n比特分组可表示的最大值为  ，因此原始明文数据不可以超过这个长度）；</p>
+<p><strong>②</strong> 左右分块大小不得大于所选哈希算法的输出长度（这是因为在Feistel结果中，计算R<sub>1</sub>=L<sub>0</sub>⊕Hash(K|R<sub>0</sub>)时，若L<sub>0</sub>的长度大于Hash输出长度的话，就无法进行异或操作）；</p>
+<p><strong>③</strong>当选择加密时，假设分组长度为n比特，则明文长度不得大于{2<sup>n</sup>-1}（这是因为我们使用了单独的一个分组来记录原始明文数据的长度，而一个n比特分组可表示的最大值为{2<sup>n</sup>-1}，因此原始明文数据不可以超过这个长度）；</p>
 <p><strong>④</strong>当选择解密时，会首先检查消息验证码的正确性，只有验证码正确才能正常解密；</p>
 <p><strong>⑤</strong>输入/输出格式检查</p>
 <p>当选择加密时，无需检查此项，使用者可以自由选择密文的输出格式；当选择解密时，则需要检查输入格式，只有输入文本的格式与所选的格式对应才能解密成功。</p>
 <h3 id="2-2-2-系统运行流程"><a href="#2-2-2-系统运行流程" class="headerlink" title="2.2.2 系统运行流程"></a>2.2.2 系统运行流程</h3><p>系统首先获取面板的基础输入，接着根据使用者选择的加密或解密操作，若选择加密，则首先检查明文长度是否过长，若检查通过则进行加密操作并添加消息验证码，得到最终的密文结果；若选择解密，则首先检查消息验证码的合法性，若检查通过，则舍弃消息验证码后进行解密，得到最终的明文结果。系统运行流程如图2.4所示。</p>
-<p>图2.4系统运行流程图</p>
+<img src="/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image5.png" align="center">
+
+<div align="center">图2.4系统运行流程图</div>
+
 <h2 id="2-3运行结果"><a href="#2-3运行结果" class="headerlink" title="2.3运行结果"></a>2.3运行结果</h2><p>本节展示系统的运行结果，包括加密、解密以及异常情况提示。</p>
 <h3 id="2-3-1-加解密运行结果"><a href="#2-3-1-加解密运行结果" class="headerlink" title="2.3.1 加解密运行结果"></a>2.3.1 加解密运行结果</h3><p>​      对于加密，系统支持对中英文混合字符加密，且可以选择多种格式输出。例如对于某个中英文混合加密数据，选择以十六进制格式输出如图2.5所示，以Base64格式输出如图2.6所示。</p>
-<p>图2.5 十六进制格式输出          图2.6 base64格式输出</p>
+<img src="/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image6.png" align="center">
+
+<div align="center">图2.5 十六进制格式输出</div>          
+
+<img src="/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image7.png" align="center">
+
+<div align="center">图2.6 base64格式输出</div>
+
+ 
+
 <p>   对于解密，系统支持对不同格式的密文进行解密，例如对十六进制格式密文解密结果如图2.7所示，对Base64格式密文解密结果如图2.8所示。</p>
-<p>   图2.7 十六进制格式输出           图2.8 base64格式输出</p>
+<img src="/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image8.png" align="center">
+
+   <div align="center">图2.7 十六进制格式输出</div>          
+
+<img src="/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image9.png" align="center">
+
+<div align="center">图2.8 base64格式输出</div>
+
 <h3 id="2-3-2-异常情况判断"><a href="#2-3-2-异常情况判断" class="headerlink" title="2.3.2 异常情况判断"></a>2.3.2 异常情况判断</h3><p>下面给出系统的异常情况判断。</p>
 <p>   <strong>①完整性检验未通过</strong>；   当密文的消息验证码发生错误时，报错如图2.9所示；</p>
-<p>图2.9 完整性检验未通过     图2.10 分块大小与左右分块和不一致</p>
-<p><strong>②分块大小与左右分块和不一致</strong>；例如BlockSize选择100，LeftSize选择40和55，报错如图2.10所示；</p>
-<p>​      <strong>③明文过长或为空</strong>；如图2.11(1)和图2.11(2)所示；</p>
-<p>图2.11(1) 明文过长           图2.11(2) 明文为空 </p>
-<p><strong>④分组长度、左分块、右分块中存在0；</strong>如图2.12所示；</p>
-<p>​      <strong>⑤口令为空；</strong>如图2.13所示；</p>
-<p>图2.12 分组长度、左分块、右分块中存在0      图2.13 口令为空 </p>
+<img src="/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image10.png" align="center">
+
+<div align="center">图2.9 完整性检验未通过</div>     
+
+<p>   <strong>②分块大小与左右分块和不一致</strong>；例如BlockSize选择100，LeftSize选择40和55，报错如图2.10所示；</p>
+<img src="/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image11.png" align="center">
+
+<div align="center">图2.10 分块大小与左右分块和不一致</div>
+
+
+
+<p>   <strong>③明文过长或为空</strong>；如图2.11(1)和图2.11(2)所示；</p>
+<img src="/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image12.png" align="center">
+
+<div align="center">图2.11(1) 明文过长</div>           
+
+<img src="/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image13.png" align="center">
+
+<div align="center">图2.11(2) 明文为空 </div>
+
+<p>   <strong>④分组长度、左分块、右分块中存在0；</strong>如图2.12所示；</p>
+<img src="/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image14.png" align="center">
+
+<div align="center">图2.12 分组长度、左分块、右分块中存在0 </div>
+
+<p>   <strong>⑤口令为空；</strong>如图2.13所示；</p>
+<img src="/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image15.png" align="center">
+
+<div align="center">图2.13 口令为空</div>
+
 <p>​      <strong>⑥密钥、加密模式、编码或哈希算法不匹配；</strong>如图2.14(1)和图2.14(2)所示；</p>
-<p> 图2.14(1)解密错误             图2.14(2) 编码格式错误</p>
+<img src="/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image16.png" align="center">
+
+<div align="center">图2.14(1)解密错误</div>
+
+<img src="/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image17.png" align="center">
+
+<div align="center">图2.14(2) 编码格式错误</div>
+
 <h1 id="3-系统测试与结果"><a href="#3-系统测试与结果" class="headerlink" title="3.系统测试与结果"></a>3.系统测试与结果</h1><p>系统测试从功能测试和性能测试两方面进行。</p>
 <p>在功能测试方面，我们对软件进行功能需求分析，然后对于所有功能需求都给出样例并运行至成功。对可能出现异常的操作进行排查，用样例抛出结果。</p>
 <p>在性能测试方面，我们将本方案hashBlockCipher在加解密效率、空间性能和安全性能上与AES、DES、DES3和SHA1进行了比较 。</p>
@@ -294,23 +371,29 @@
 <h2 id="3-2-性能测试"><a href="#3-2-性能测试" class="headerlink" title="3.2 性能测试"></a>3.2 性能测试</h2><p>  我们从加解密效率和密钥存储空间对我们的系统进行了性能测试。</p>
 <p>◆加解密效率对比（加密一百万次的时间对比，单位：秒）</p>
 <p>通过对比AES、DES、3-DES、以及本作品的加密时间来对比加解密效率，通过控制变量，即四个方案的明文输入都恰好为一个分组，同时本次实验的左右分块大小都设置为各自占一半，以排除其他的影响因素进行实验，同时由于在本次对照实验中的Feistel网络使用了SHA-1哈希算法，因此我们单独将SHA-1哈希的时间分离开来计算，结果如图2.15所示。</p>
-<p>图2.15 加密效率对比</p>
-<p>可以看到：<strong>AES</strong>：10.221512794494629s <strong>DES</strong>：11.831102132797241s</p>
-<p><strong>3-DES</strong>：37.54402709007263s <strong>本作品</strong>：22.443878650665283s</p>
+ <img src="/2021/10/22/%E5%9F%BA%E4%BA%8Ehash%E7%AE%97%E6%B3%95%E7%9A%84%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BD%AF%E4%BB%B6%E2%80%94%E2%80%94%E4%BD%9C%E5%93%81%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A/image18.png" align="center">
+
+<div align="center">图2.15 加密效率对比</div>
+
+<p>可以看到：</p>
+<p><strong>AES</strong>：10.221512794494629s </p>
+<p><strong>DES</strong>：11.831102132797241s</p>
+<p><strong>3-DES</strong>：37.54402709007263s </p>
+<p><strong>本作品</strong>：22.443878650665283s</p>
 <p><strong>SHA-1</strong>：4.437442779541016s</p>
 <p>我们的方案耗时大于AES和DES，但小于3-DES。由于我们使用的轮函数为哈希算法，为了更直观的对比哈希算法所占用的时间，我们将本次实验中所使用的SHA-1单独分离出来计算一百万次。由于我们的方案每次加密会调用三次哈希算法，因此若将本方案扣除三次哈希所占用的时间，效率上与AES和DES相差无几。</p>
 <p>我们通过牺牲一定的时间效率来换取加密方案的灵活性，实现了传统分组密码不具备的功能。</p>
 <p>◆空间性能对比（比较各自密钥大小）</p>
-<p>与常见的分组密码相比，例如AES的密钥长度为128、192或256比特，DES的密钥长度为64比特，三重DES的密钥长度为112比特，本作品的密钥长度完全由用户自定义，即可使用较短的密钥以减少存储空间，也可以适当增长密钥以提升安全性能。</p>
+<p>与常见的分组密码相比，例如AES的密钥长度为<strong>128</strong>、<strong>192</strong>或<strong>256</strong>比特，DES的密钥长度为<strong>64</strong>比特，三重DES的密钥长度为<strong>112</strong>比特，本作品的密钥长度完全由用户自定义，即可使用较短的密钥以减少存储空间，也可以适当增长密钥以提升安全性能。</p>
 <h2 id="3-3-测试数据与结果"><a href="#3-3-测试数据与结果" class="headerlink" title="3.3 测试数据与结果"></a>3.3 测试数据与结果</h2><p>我们的测试样例如下所示<strong>：</strong></p>
-<p>{“blockSize”: 100,</p>
-<p>“leftSize”: 30,</p>
-<p>“rightSize”: 70, </p>
-<p>“plainText”: “This is a test. Test whether the encrypt system is safe or not.”, </p>
-<p>“key”: “I am a key!”, </p>
-<p>“哈希算法”: sm3/sha1/sha2_224/sha2_256/sha2_384/sha2_512/sha2_224/sha2_256/sha2_384/sha2_512,</p>
-<p>“加密模式”: ecb/cbc/cfb/ofb, </p>
-<p>密文输出格式/密文输入格式: Binary/Decimal/Hexadecimal/Base64}</p>
+<p><code>&#123;&quot;blockSize&quot;: 100,</code></p>
+<p><code>&quot;leftSize&quot;: 30,</code></p>
+<p><code>&quot;rightSize&quot;: 70,</code> </p>
+<p><code>&quot;plainText&quot;: &quot;This is a test. Test whether the encrypt system is safe or not.&quot;,</code> </p>
+<p><code>&quot;key&quot;: &quot;I am a key!&quot;,</code> </p>
+<p><code>&quot;哈希算法&quot;: sm3/sha1/sha2_224/sha2_256/sha2_384/sha2_512/sha2_224/sha2_256/sha2_384/sha2_512,</code></p>
+<p><code>&quot;加密模式&quot;: ecb/cbc/cfb/ofb,</code> </p>
+<p><code>密文输出格式/密文输入格式: Binary/Decimal/Hexadecimal/Base64&#125;</code></p>
 <h1 id="4-应用前景"><a href="#4-应用前景" class="headerlink" title="4.应用前景"></a>4.应用前景</h1><p>本作品在传统分组加密方案的基础上增加了更多的灵活性，进一步迎合了用户的需求；并可以通过大幅提高密钥长度来增强加密方案的安全性；同时用哈希函数替换轮函数使得一些针对分组加密的攻击诸如CBC翻转攻击和padding oracle等变得十分困难。因此本作品拥有加密软件所需的一定的安全性能，也满足了用户的使用体验，有很良好的应用前景。</p>
 <h1 id="5-结论"><a href="#5-结论" class="headerlink" title="5. 结论"></a>5. 结论</h1><p>本作品的特点为灵活度高，与传统的分组密码不同，本作品支持自定义分组长度以及Feistel网络的左右分块大小，同时使用用户的口令作为加密系统的密钥，整个系统完全受用户所控。在加密效率上，本作品使用的是分组加密模式，采用单密钥加密，因此加解密效率较高，适用性很强；在安全性上，由于Feistel轮函数使用的是成熟的哈希算法，在轮函数是密码安全的伪随机函数时，3轮Feistel就足以使这种分组密码成为伪随机置换；同时hash算法作为轮函数，使得密钥长度完全受用户控制，使用较长密钥能够获得更高的安全性，密文破解会很困难。本作品相较于AES、DES和3DES等传统的对称加密方案有许多改进之处，实现了传统分组密码不具备的功能。</p>
 
