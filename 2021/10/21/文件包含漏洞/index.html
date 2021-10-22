@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="文件包含漏洞渗透攻击文件包含漏洞 进入靶机网页，  http:&#x2F;&#x2F;192.168.176.135&#x2F;dvwa&#x2F;vulnerabilities&#x2F;fi&#x2F;?page&#x3D;include.php 这里其实是将靶机目录&#x2F;var&#x2F;www&#x2F;dvaw&#x2F;vulnerabilities&#x2F;fi&#x2F;下的include.php文件传给index.php(即文件包含) 这种攻击的想法是将本机的某个病毒文件或其他服务器的某个病毒文件传">
+  <meta name="description" content="对OWASP组织的一个靶机Broken_Web_Apps中的文件包含漏洞攻击">
 <meta property="og:type" content="article">
 <meta property="og:title" content="文件包含漏洞">
 <meta property="og:url" content="http://example.com/2021/10/21/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/index.html">
 <meta property="og:site_name" content="猪哥的博客">
-<meta property="og:description" content="文件包含漏洞渗透攻击文件包含漏洞 进入靶机网页，  http:&#x2F;&#x2F;192.168.176.135&#x2F;dvwa&#x2F;vulnerabilities&#x2F;fi&#x2F;?page&#x3D;include.php 这里其实是将靶机目录&#x2F;var&#x2F;www&#x2F;dvaw&#x2F;vulnerabilities&#x2F;fi&#x2F;下的include.php文件传给index.php(即文件包含) 这种攻击的想法是将本机的某个病毒文件或其他服务器的某个病毒文件传">
+<meta property="og:description" content="对OWASP组织的一个靶机Broken_Web_Apps中的文件包含漏洞攻击">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2021/10/21/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/image1.png">
 <meta property="og:image" content="http://example.com/2021/10/21/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/image2.png">
@@ -47,7 +47,7 @@
 <meta property="og:image" content="http://example.com/2021/10/21/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/image18.png">
 <meta property="og:image" content="http://example.com/2021/10/21/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/image19.png">
 <meta property="article:published_time" content="2021-10-21T11:52:37.000Z">
-<meta property="article:modified_time" content="2021-10-21T12:00:11.139Z">
+<meta property="article:modified_time" content="2021-10-22T02:12:16.558Z">
 <meta property="article:author" content="zym">
 <meta property="article:tag" content="小白，学习">
 <meta name="twitter:card" content="summary">
@@ -200,10 +200,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-10-21 19:52:37 / 修改时间：20:00:11" itemprop="dateCreated datePublished" datetime="2021-10-21T19:52:37+08:00">2021-10-21</time>
+              <time title="创建时间：2021-10-21 19:52:37" itemprop="dateCreated datePublished" datetime="2021-10-21T19:52:37+08:00">2021-10-21</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-22 10:12:16" itemprop="dateModified" datetime="2021-10-22T10:12:16+08:00">2021-10-22</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -229,6 +235,7 @@
   </span>
   
   
+            <div class="post-description">对OWASP组织的一个靶机Broken_Web_Apps中的文件包含漏洞攻击</div>
 
         </div>
       </header>
