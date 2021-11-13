@@ -4,6 +4,81 @@
   
     
     <entry>
+      <title>基础入门——系统及数据库</title>
+      <link href="/2021/11/13/%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E7%B3%BB%E7%BB%9F%E5%8F%8A%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <url>/2021/11/13/%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E7%B3%BB%E7%BB%9F%E5%8F%8A%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
+      
+        <content type="html"><![CDATA[<h1 id="05-基础入门——系统及数据库"><a href="#05-基础入门——系统及数据库" class="headerlink" title="05 基础入门——系统及数据库"></a>05 基础入门——系统及数据库</h1><p><img src="/2021/11/13/%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E7%B3%BB%E7%BB%9F%E5%8F%8A%E6%95%B0%E6%8D%AE%E5%BA%93/image1.png" alt="image1.png"></p><h2 id="操作系统层面"><a href="#操作系统层面" class="headerlink" title="操作系统层面"></a>操作系统层面</h2><p><strong>识别操作系统常见方法：</strong></p><p>1.nmap扫描</p><p>2.windows大小写不敏感，linux大小写敏感（比如url大小写试探可以判断）</p><p>3.TTL值：linux一般为64（&lt;100），windows一般为128（&gt;100）</p><p><strong>两者区别及识别意义</strong></p><p><strong>操作系统层面漏洞类型对应意义：</strong></p><p>利用漏洞进行内网渗透、横向渗透，比如永恒之蓝等</p><p><strong>操作系统层面漏洞影响范围：</strong></p><p>拿到服务器权限等</p><h2 id="数据库层面"><a href="#数据库层面" class="headerlink" title="数据库层面"></a>数据库层面</h2><p><strong>识别数据库类型常见方法：</strong></p><p>1.nmap工具扫描</p><p>2.对应端口开放等</p><p><strong>数据库类型区别及识别意义</strong></p><p><strong>数据库常见漏洞类型及攻击</strong></p><p><strong>数据库层面漏洞影响范围</strong></p><p><strong>常见脚本对应的数据库类型：</strong></p><p>ASP+Access</p><p>php+mysql</p><p>aspx+mssql</p><p>jsp+mssql,oracle</p><p>python+mongodb<br>…</p><p><strong>常见数据库对应的默认端口：</strong></p><p><strong>关系型数据库:</strong><br>1.Oracle数据库默认端口号为，1521;</p><p>2.MySQL数据库默认端口号为，3306;</p><p>3.SQLServer数据库默认端口号为，1433;<br><strong>NOSQL数据库:</strong><br>1.MongoDB默认端口号为:27017;</p><p>2.Redis默认端口号为:6379;<br>3.memcached默认端口号为:11211;<br>其他:</p><p>1527 Derby<br>5432 pgsql<br>5000 db2<br>9092 pointbase<br>无默认端口 Informix</p><h2 id="第三方层面"><a href="#第三方层面" class="headerlink" title="第三方层面"></a>第三方层面</h2><p>如何判断有那些第三方平台或软件</p><p>简要为什么要识别第三方平台或软件</p><p>常见第三方平台或软件漏洞类型及攻击</p><p>简要第三方平台或软件安全测试的范围</p><h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>除去常规WEB安全及APP安全测试外，类似服务器单一或复杂的其他服务（邮件，游戏，负载均衡等)，也可以作为安全测试目标，此类目标测试原则只是少了WEB应用或其他安全问题。所以明确安全测试思路是很重要的!</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 小迪安全学习笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 安全学习，学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>基础入门——WEB源码拓展</title>
+      <link href="/2021/11/13/%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94WEB%E6%BA%90%E7%A0%81%E6%8B%93%E5%B1%95/"/>
+      <url>/2021/11/13/%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94WEB%E6%BA%90%E7%A0%81%E6%8B%93%E5%B1%95/</url>
+      
+        <content type="html"><![CDATA[<h1 id="04-基础入门——WEB源码拓展"><a href="#04-基础入门——WEB源码拓展" class="headerlink" title="04 基础入门——WEB源码拓展"></a>04 基础入门——WEB源码拓展</h1><h2 id="一、知识点"><a href="#一、知识点" class="headerlink" title="一、知识点"></a>一、知识点</h2><ul><li><strong>关于WEB源码目录结构</strong></li><li><strong>关于WEB源码脚本类型</strong></li><li><strong>关于WEB源码应用分类</strong></li><li><strong>关于WEB源码其他说明</strong></li></ul><p>1.数据库配置文件，后台目录，模版目录，数据库目录等</p><p>2.ASP,PHP,ASPX,JSP,JAVAWEB等脚本类型源码安全问题<br>语言与框架（(还包含内网渗透等web安全知识): <a href="https://websec.readthedocs.io/zh/latest/language/index.html(%E5%A6%82%E6%9E%9C%E8%83%BD%E5%BE%97%E5%88%B0%E6%BA%90%E7%A0%81%EF%BC%8C%E5%8F%AF%E4%BB%A5%E6%9F%A5%E7%9C%8Bconfig.php%EF%BC%8C%E4%B8%80%E8%88%AC%E8%BF%99%E4%B8%AA%E6%96%87%E4%BB%B6%E4%BC%9A%E6%9C%89%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E5%AF%86%E7%A0%81%EF%BC%8C%E6%89%BE%E5%88%B0%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E5%90%8E%E3%80%82%E3%80%82%E3%80%82%E3%80%82%E4%BD%A0%E6%87%82%E5%BE%97)">https://websec.readthedocs.io/zh/latest/language/index.html(如果能得到源码，可以查看config.php，一般这个文件会有用户名和密码，找到后台管理登录界面后。。。。你懂得)</a></p><p>3.社交，论坛，门户，第三方，博客等不同的代码机制对应漏洞<br>4.开源，未开源问题，框架非框架问题，关于CMS识别问题及后续等(CMS:内容管理系统，通过CMS识别，可以判断对方的网站搭建框架（有可能是用网上的源码稍加修改搭建起来的);如果对方是用框架搭建的，则可以根据对应框架的漏洞进行分析;如果不是，则需要分析源码了)<br>5.关于源码获取的相关途径:搜索，咸鱼淘宝，第三方源码站（菜鸟源码、tor，tg等)，各种行业对应</p><p><strong>总结：</strong></p><p>关注应用分类及脚本类型估摸出可能存在的漏洞（其中框架类例外〕，在获取源码后可进行本地安全测试或代码审计，也可以分析其目录工作原理（数据库备份，bak文件等)，未获取到的源码采用各种方法想办法获取!</p><p><img src="/2021/11/13/%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94WEB%E6%BA%90%E7%A0%81%E6%8B%93%E5%B1%95/image1.png" alt="image1.png"></p><h2 id="二、演示案例"><a href="#二、演示案例" class="headerlink" title="二、演示案例"></a>二、演示案例</h2><h3 id="ASP-PHP等源码下安全测试"><a href="#ASP-PHP等源码下安全测试" class="headerlink" title="ASP,PHP等源码下安全测试"></a>ASP,PHP等源码下安全测试</h3><p>平台识别-某CMS无漏洞-默认数据库</p><p>平台识别-某CMS有漏洞-漏洞利用<br>windows下查看文件MD5值:</p><p><code>certutil -hashfile 文件名</code></p><h3 id="源码应用分类下的针对漏洞"><a href="#源码应用分类下的针对漏洞" class="headerlink" title="源码应用分类下的针对漏洞"></a>源码应用分类下的针对漏洞</h3><p>niushop电商类关注漏洞点-业务逻辑<br>商品支付漏洞利用:购买商品，通过bp抓包(点击“立即购买”时抓)、改包(商品数星改为&lt;=0)，再Forward让网页页面跳转到支付界面，即可实现0元支付。</p><h3 id="简要目标从识别到源码获取"><a href="#简要目标从识别到源码获取" class="headerlink" title="简要目标从识别到源码获取"></a>简要目标从识别到源码获取</h3><p>人工爆框架-搜索特定url(输入indexylogin/login/token搜索有漏洞的网站，还可以搜网站文件名如arc.listview.class.php)-获取其他相符站点-漏洞测试借助特定行业源码或咸鱼进行搜索获取-本地搭建-代码宙计或其他。<br>还可以把url放到ThinkPHP进行漏洞检测、命令执行、getshell;可以尝试去搜索引擎搜一下index/login/login/token，找到对应网站再放到thnkphp中检测。</p><h2 id="三、涉及资源"><a href="#三、涉及资源" class="headerlink" title="三、涉及资源"></a>三、涉及资源</h2><p>搜十二堂源码下载站</p><p>咸鱼获取源码<br>云悉指纹识别: <a href="https://www.yunsee.cn/">https://www.yunsee.cn</a><br>CMS识别工具(如果失效就去小迪博客里找) ∶<a href="https://w.ddosi.workers.dev/">https://w.ddosi.workers.dev/</a><br><a href="http://whatweb.bugscaner.com/">http://whatweb.bugscaner.com</a><br><a href="https://github.com/Lucifer1993/cmsprint">https://github.com/Lucifer1993/cmsprint</a><br>和百<br><a href="https://github.com/M4tir/Github-Monitor">https://github.com/M4tir/Github-Monitor</a><br>语言与框架(还包含内网渗透等web安全知识) : <a href>https:/websec.readthedocs.io/zh/latest/language/index.html</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 小迪安全学习笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 安全学习，学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>基础入门——搭建安全拓展</title>
+      <link href="/2021/11/13/%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E6%90%AD%E5%BB%BA%E5%AE%89%E5%85%A8%E6%8B%93%E5%B1%95/"/>
+      <url>/2021/11/13/%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E6%90%AD%E5%BB%BA%E5%AE%89%E5%85%A8%E6%8B%93%E5%B1%95/</url>
+      
+        <content type="html"><![CDATA[<h1 id="03-基础入门——搭建安全拓展"><a href="#03-基础入门——搭建安全拓展" class="headerlink" title="03 基础入门——搭建安全拓展"></a>03 基础入门——搭建安全拓展</h1><h2 id="设计知识"><a href="#设计知识" class="headerlink" title="设计知识"></a>设计知识</h2><p>1.常见搭建平台脚本启用</p><p>2.域名IP目录解析安全问题</p><p>3.常见文件后缀解析对应安全</p><p>4.常见安全测试中的安全防护</p><p>5.WEB后门与用户及文件权限</p><h2 id="WEB源码中敏感文件"><a href="#WEB源码中敏感文件" class="headerlink" title="WEB源码中敏感文件"></a>WEB源码中敏感文件</h2><p>后台路径，数据库配置文件，备份文件等</p><p>（寻找方式：google搜索方法、robots.txt文件、抓包、御剑、铸剑工具等）</p><h2 id="IP或域名解析WEB源码目录对应下的存在的安全问题"><a href="#IP或域名解析WEB源码目录对应下的存在的安全问题" class="headerlink" title="IP或域名解析WEB源码目录对应下的存在的安全问题"></a>IP或域名解析WEB源码目录对应下的存在的安全问题</h2><p>域名访问，IP访问（结合类似备份文件目录）</p><h2 id="脚本后缀对应解析（其他格式可相同——上传安全）"><a href="#脚本后缀对应解析（其他格式可相同——上传安全）" class="headerlink" title="脚本后缀对应解析（其他格式可相同——上传安全）"></a>脚本后缀对应解析（其他格式可相同——上传安全）</h2><p>存在下载或为解析问题</p><h2 id="常见防护中的IP验证，域名验证等"><a href="#常见防护中的IP验证，域名验证等" class="headerlink" title="常见防护中的IP验证，域名验证等"></a>常见防护中的IP验证，域名验证等</h2><p>用IP访问的权限比域名要高（比如有些目录只有ip才能访问出来：有些网站建设人员会疏忽，可以用ip去访问，有时会发现一些备份文件源码等），使用御剑或者手动访问的时候最好用ip，别用域名。</p><p>后门是否给予执行权限</p><p>后门是否给予操作目录或文件权限</p><p>后门是否给予其他用户权限</p><p>总结下关于可能会存在的安全或防护问题？</p><p><strong>这里举个例子，在win7上用phpstudy搭建一个本地网站，这里存在两个网站html和kkk</strong></p><p><img src="/2021/11/13/%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E6%90%AD%E5%BB%BA%E5%AE%89%E5%85%A8%E6%8B%93%E5%B1%95/image1.png" alt="image1"></p><p><strong>然后指定域名study.com对应的是html网站</strong></p><p><img src="/2021/11/13/%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E6%90%AD%E5%BB%BA%E5%AE%89%E5%85%A8%E6%8B%93%E5%B1%95/image2.png" alt="image2"></p><p><strong>我们访问study.com，此时我们只能访问html目录的内容，访问kkk的话就会报错</strong></p><p><img src="/2021/11/13/%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E6%90%AD%E5%BB%BA%E5%AE%89%E5%85%A8%E6%8B%93%E5%B1%95/image3.png" alt="image3"></p><p><img src="/2021/11/13/%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E6%90%AD%E5%BB%BA%E5%AE%89%E5%85%A8%E6%8B%93%E5%B1%95/image4.png" alt="image4"></p><p><strong>但我们用ip地址访问的话显示的就是整个WWW目录下的内容，就可以访问html和kkk目录下的所有内容</strong></p><p><img src="/2021/11/13/%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E6%90%AD%E5%BB%BA%E5%AE%89%E5%85%A8%E6%8B%93%E5%B1%95/image5.png" alt="image5"></p><p><img src="/2021/11/13/%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E2%80%94%E2%80%94%E6%90%AD%E5%BB%BA%E5%AE%89%E5%85%A8%E6%8B%93%E5%B1%95/image6.png" alt="image6"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 小迪安全学习笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 安全学习，学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>phpMyAdmin 4.0.x—4.6.2 远程代码执行漏洞复现</title>
       <link href="/2021/11/12/phpMyAdmin-4-0-x%E2%80%944-6-2-%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
       <url>/2021/11/12/phpMyAdmin-4-0-x%E2%80%944-6-2-%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</url>
