@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.zymstudy.club/2021/11/25/%E5%A2%A8%E8%80%85%E5%9C%A8%E7%BA%BF%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/</loc>
+    
+    <lastmod>2021-11-25</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.zymstudy.club/2021/11/22/sqlilabs%E2%80%94%E2%80%94sql%E6%B3%A8%E5%85%A5%E5%AD%A6%E4%B9%A0/</loc>
     
     <lastmod>2021-11-25</lastmod>
@@ -292,6 +299,13 @@
   
   <url>
     <loc>https://www.zymstudy.club/tags/%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA%EF%BC%8C%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</loc>
+    <lastmod>2021-11-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.zymstudy.club/tags/%E5%A2%A8%E8%80%85%EF%BC%8C%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%EF%BC%8Csql%E6%B3%A8%E5%85%A5%EF%BC%8C%E5%9C%A8%E7%BA%BF%E9%9D%B6%E5%9C%BA/</loc>
     <lastmod>2021-11-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
